@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanjil Bin Mohiuddin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1254,6 +1254,89 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Add these CSS fixes */
+    
+    /* Prevent horizontal scrolling */
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+        /* Fix container padding */
+        .container {
+            padding: 0 1.5rem;
+        }
+        
+        /* Adjust hero section */
+        .hero {
+            padding-top: 100px;
+            min-height: auto;
+            height: auto;
+            padding-bottom: 3rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        /* Fix project card widths */
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .project-card, .education-card, .skill-category {
+            width: 100%;
+            min-width: 0;
+        }
+        
+        /* Adjust floating elements */
+        .floating-element {
+            display: none; /* Hide on mobile for better performance */
+        }
+        
+        /* Fix mobile menu */
+        .mobile-menu {
+            width: 100%;
+            box-sizing: border-box;
+            left: 0;
+            right: 0;
+        }
+        
+        /* Ensure all sections fit */
+        section {
+            padding: 4rem 0;
+            box-sizing: border-box;
+        }
+        
+        /* Fix contact form layout */
+        .contact-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* For very small devices */
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Stack buttons vertically */
+        .hero-buttons {
+            flex-direction: column;
+        }
+    }
     </style>
 </head>
 <body>
@@ -2054,6 +2137,23 @@
                 }
             });
         });
+        function handleMobileLayout() {
+   
+    if (window.innerWidth <= 768) {
+      
+        document.documentElement.style.setProperty('--neon-glow', 'none');
+        
+       
+        if (window.pJSDom && window.pJSDom.length > 0) {
+            window.pJSDom[0].pJS.particles.number.value = 30;
+            window.pJSDom[0].pJS.fn.particlesRefresh();
+        }
+    }
+}
+
+// Run on load and resize
+window.addEventListener('load', handleMobileLayout);
+window.addEventListener('resize', handleMobileLayout);
     </script>
 </body>
 </html>
